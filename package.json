@@ -1,7 +1,7 @@
 {
   "name": "vue2-tawk",
   "description": "vue 2.x wrapper for tawk.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "A. Vincenzi <alberto.vincenzi@gmail.com>",
   "license": "MIT",
   "private": false,
