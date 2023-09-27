@@ -1,32 +1,35 @@
 # Vue2-tawk
+
 Vue2 wrapper for tawk.io
 
 This Vue plugin injects a tawk.io instance into all of your vue instances
 
 ## Install
 
-``` bash
+```bash
 npm install vue2-tawk --save
 or
 yarn add vue2-tawk -D
 ```
-  
+
 ## Usage
 
 ### Initialize
-1   Create an account of https://www.tawk.to/
-2   Register the plugin
 
-``` js
+1. Create an account of https://www.tawk.to/
+2. Register the plugin adding the source of your JS script in `YOUR_TAWK_SRC`
+
+```js
 import Tawk from 'vue2-tawk'
   
 Vue.use(Tawk, {
-    tawkSrc: 'YOU_TAWK_SRC'
+    tawkSrc: 'YOUR_TAWK_SRC'
 })
 ```
 
 The chat is not automatically started. To do that, you must execute this:
-``` js
+
+```js
 this.$Tawk.$startChat();
 ```
 
@@ -43,13 +46,17 @@ the object of user should like that
 ```
 
 ### Ends the current ongoing chat.
-you should close the chat when user logout your website
+
+When a user logout from the website, you should close the chat:
+
 ```js
 this.$Tawk.$endChat()
 ```
 
 ### Widget Operations
-you can toggle, hide and show widget with the following command:
+
+You can toggle, hide and show widget with the following command:
+
 ```js
 this.$Tawk.$toggleVisibility()
 this.$Tawk.$showWidget()
@@ -57,7 +64,9 @@ this.$Tawk.$hideWidget()
 ```
 
 ### Chat Operations
-you can toggle, minimize and maximize the chat with the following command:
+
+You can toggle, minimize and maximize the chat with the following command:
+
 ```js
 this.$Tawk.$toggle()
 this.$Tawk.$maximize()
@@ -65,6 +74,7 @@ this.$Tawk.$minimize()
 ```
 
 You can also open the chat in a pop-up this way:
+
 ```js
 this.$Tawk.$popup()
 ```
