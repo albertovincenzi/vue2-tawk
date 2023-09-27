@@ -1,4 +1,4 @@
-# vue-tawk
+# Vue2-tawk
 Vue2 wrapper for tawk.io
 
 This Vue plugin injects a tawk.io instance into all of your vue instances
@@ -14,11 +14,11 @@ yarn add vue2-tawk -D
 ## Usage
 
 ### Initialize
-First you'll need to register the plugin  
-Second you should had a account of https://www.tawk.to/
+1   Create an account of https://www.tawk.to/
+2   Register the plugin
 
 ``` js
-import Tawk from 'vue-tawk'
+import Tawk from 'vue2-tawk'
   
 Vue.use(Tawk, {
     tawkSrc: 'YOU_TAWK_SRC'
