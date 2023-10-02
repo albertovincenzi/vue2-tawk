@@ -16,34 +16,78 @@ yarn add vue2-tawk -D
 
 ## Usage
 
-### Initialization
+### Configuration
 
 1. **Create a Tawk.to Account**: First, you need to have an account on [Tawk.to](https://www.tawk.to/).
-
-2. **Register the Plugin**: Once you have your Tawk.to account, register the Vue2-tawk plugin and provide the source of your JavaScript script in the `YOUR_TAWK_SRC` parameter.
+2. **Register the Plugin**: Once you have your Tawk.to account, register the Vue2-tawk plugin. You will have to specify `TAWK_PROPERTY_ID` and `TAWK_WIDGET_ID` as options. You can retrieve them in your Tawk account.
 
 ```js
 import Tawk from 'vue2-tawk'
   
 Vue.use(Tawk, {
-    tawkSrc: 'YOUR_TAWK_SRC'
+    propertyId: 'TAWK_PROPERTY_ID',
+    widgetId: 'TAWK_WIDGET_ID'
 })
 ```
 
 By registering the plugin, a Tawk.io instance will be injected into all of your Vue instances.
 
-To start the chat, use the following method:
+The JS is not automaticall injected: this can allow you to decide in which moment the chat must be initialized.
+Do to do, just call the following method:
 
 ```js
-this.$Tawk.$startChat();
+this.$Tawk.init();
 ```
 
-### Setting Visitor Information
+### Actions
 
-You can set the visitor's name and email using the `$updateChatUser` method:
+The following actions are supported:
 
 ```js
-this.$Tawk.$updateChatUser(user);
+this.$Tawk.logout()
+this.$Tawk.maximize()
+this.$Tawk.minimize()
+this.$Tawk.toggle()
+this.$Tawk.popup()
+this.$Tawk.showWidget()
+this.$Tawk.hideWidget()
+this.$Tawk.toggleVisibility()
+this.$Tawk.endChat()
+```
+
+### Getters
+
+You can control the status of Tawk using this methods:
+
+```js
+this.$Tawk.getWindowType()
+this.$Tawk.getStatus()
+this.$Tawk.isChatMaximized()
+this.$Tawk.isChatMinimized()
+this.$Tawk.isChatHidden()
+this.$Tawk.isChatOngoing()
+this.$Tawk.isVisitorEngaged()
+this.$Tawk.onLoaded()
+this.$Tawk.onBeforeLoaded()
+this.$Tawk.widgetPosition()
+```
+
+### Setters
+
+You can set and change some Tawk parameters with these methods:
+
+```js
+this.$Tawk.visitor()
+this.$Tawk.setAttributes()
+this.$Tawk.addEvent()
+this.$Tawk.addTags()
+this.$Tawk.removeTags()
+```
+
+Eg: You can set the visitor's name and email using the `setAttributes` method:
+
+```js
+this.$Tawk.setAttributes(user);
 ```
 
 The `user` object should have the following structure:
@@ -56,52 +100,30 @@ The `user` object should have the following structure:
 }
 ```
 
-### Ending a Chat
-
-To end the current ongoing chat, use:
-
-```js
-this.$Tawk.$endChat()
-```
-
-### Widget Operations
-
-You have control over the chat widget's visibility with the following commands:
-
-```js
-this.$Tawk.$toggleVisibility()
-this.$Tawk.$showWidget()
-this.$Tawk.$hideWidget()
-```
-
-### Chat Operations
-
-You can perform various chat operations with these commands:
-
-```js
-this.$Tawk.$toggle()
-this.$Tawk.$maximize()
-this.$Tawk.$minimize()
-```
-
-To open the chat in a pop-up, use:
-
-```js
-this.$Tawk.$popup()
-```
-
-### Event Callbacks
+### Listeners Callbacks
 
 For event callbacks, please refer to the [Tawk.to JavaScript API documentation](https://developer.tawk.to/jsapi/) for more details. Vue2-tawk provides convenient methods to listen to these events:
 
 ```js
-this.$Tawk.$onChatStarted()
-this.$Tawk.$onChatEnded()
-this.$Tawk.$onChatHidden()
-this.$Tawk.$onChatMinimized()
-this.$Tawk.$onChatSatisfaction()
-this.$Tawk.$onAgentJoinChat()
-this.$Tawk.$onAgentLeaveChat()
+this.$Tawk.onLoad()
+this.$Tawk.onStatusChange()
+this.$Tawk.onBeforeLoad()
+this.$Tawk.onChatMaximized()
+this.$Tawk.onChatMinimized()
+this.$Tawk.onChatHidden()
+this.$Tawk.onChatStarted()
+this.$Tawk.onChatEnded()
+this.$Tawk.onPrechatSubmit()
+this.$Tawk.onOfflineSubmit()
+this.$Tawk.onChatMessageVisitor()
+this.$Tawk.onChatMessageAgent()
+this.$Tawk.onChatMessageSystem()
+this.$Tawk.onAgentJoinChat()
+this.$Tawk.onAgentLeaveChat()
+this.$Tawk.onChatSatisfaction()
+this.$Tawk.onVisitorNameChanged()
+this.$Tawk.onFileUpload()
+this.$Tawk.onTagsUpdated()
 ```
 
 These callbacks allow you to respond to various chat-related events and enhance the user experience on your website.
